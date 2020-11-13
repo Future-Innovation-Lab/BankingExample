@@ -45,8 +45,6 @@ namespace BankingXamarin
         private void DisplayTransactionsButton_Clicked(object sender, EventArgs e)
         {
             Navigation.PushAsync(new TransactionsPage(_account));
-
-            //DisplayTransactionsLabel.Text = _account.GetTransactionHistory();
         }
 
         private void DisplayCustomerPage_Clicked(object sender, EventArgs e)
