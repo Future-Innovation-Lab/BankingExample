@@ -1,0 +1,49 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="BankingXamarin.TransactionsPage">
+    <ContentPage.Content>
+        
+        <StackLayout>
+
+            <Frame Margin="5" BorderColor="Black" BackgroundColor="Azure">
+                <StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="30" Padding="5">
+                <Label FontAttributes="Bold" Text="Account Number" FontSize="Large" VerticalOptions="Center"/>
+                <Label Text="{Binding AccountNumber}" FontSize="Medium" VerticalOptions="Center"/>
+            </StackLayout>
+            <StackLayout Orientation="Horizontal" HeightRequest="100" Padding="5">
+                <Label FontAttributes="Bold" Text="Balance" FontSize="Large" VerticalOptions="Center"/>
+                <Label Text="{Binding Balance, StringFormat='{0:C2}'}" FontSize="Medium" VerticalOptions="Center"/>
+            </StackLayout>
+                </StackLayout>
+
+            </Frame>
+            <ListView ItemsSource="{Binding Transactions}" HasUnevenRows="True">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <Grid>
+                                <Grid.RowDefinitions>
+                                    <RowDefinition Height="Auto"/>
+                                    <RowDefinition Height="Auto"/>
+                                </Grid.RowDefinitions>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="*"/>
+                                    <ColumnDefinition Width="3*"/>
+                                    <ColumnDefinition Width="*"/>
+                                </Grid.ColumnDefinitions>
+
+                               <Label Padding="5,0,5,0" FontAttributes="Bold" FontSize="Medium" TextColor="Black" Grid.Column="0" Grid.Row="0" Text="{Binding Description}"/>
+                                <Label Padding="5,0,5,0" FontAttributes="Bold"  TextColor="Gray" Grid.ColumnSpan="2" Grid.Column="0" Grid.Row="1" Text="{Binding TransactionDate}"/>
+                                <Label Padding="5,0,5,0"  Grid.Column="2" Grid.Row="0" Text="{Binding Amount,StringFormat='{0:C2}'} }"/>
+                                <Label Padding="5,0,5,0" FontAttributes="Bold" Text="Amount" Grid.Column="1" Grid.Row="0" HorizontalOptions="EndAndExpand"/>
+                            </Grid>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+                
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
