@@ -1,3 +1,5 @@
+using SQLite;
+using SQLiteNetExtensions.Attributes;
 using System;
 using System.Collections.Generic;
 using System.Text;
@@ -6,6 +8,9 @@ namespace Banking
 {
     public class BankAccount
     {
+        [PrimaryKey, AutoIncrement]
+        public int BankAccountId { get; set; }
+
         private static int LastAccountNumber = 6000;
 
         public int AccountNumber { get; set; }
@@ -27,7 +32,11 @@ namespace Banking
 
         }
 
+        [OneToMany(CascadeOperations = CascadeOperation.All)]
         public List<Transaction> Transactions { get; set; }
+
+
+        [ForeignKey(typeof(Customer))] public int CustomerId { get; set; }
 
         public BankAccount()
         {
@@ -36,13 +45,15 @@ namespace Banking
             Transactions = new List<Transaction>();
         }
 
-        public void DepositMoney(decimal amount, DateTime date, string description)
+        public Transaction DepositMoney(decimal amount, DateTime date, string description)
         {
             Transaction transaction = new Transaction(amount, date, description);
 
             Transactions.Add(transaction);
+
+            return transaction;
         }
-        public void WithdrawMoney(decimal amount, DateTime date, string description)
+        public Transaction WithdrawMoney(decimal amount, DateTime date, string description)
         {
             if (Balance - amount < 0)
                 throw new InvalidOperationException("Insuffienct Funds");    
@@ -50,6 +61,8 @@ namespace Banking
             Transaction transaction = new Transaction(-amount, date, description);
 
             Transactions.Add(transaction);
+
+            return transaction;
         }
 
         public string GetTransactionHistory()

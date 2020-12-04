@@ -9,7 +9,7 @@
             <Frame Margin="5" BorderColor="Black" BackgroundColor="Azure">
                 <StackLayout>
             <StackLayout Orientation="Horizontal" HeightRequest="30" Padding="5">
-                <Label FontAttributes="Bold" Text="Account Number" FontSize="Large" VerticalOptions="Center"/>
+                <Label TextColor="BurlyWood" FontAttributes="Bold" Text="Account Number" FontSize="Large" VerticalOptions="Center"/>
                 <Label Text="{Binding AccountNumber}" FontSize="Medium" VerticalOptions="Center"/>
             </StackLayout>
             <StackLayout Orientation="Horizontal" HeightRequest="100" Padding="5">

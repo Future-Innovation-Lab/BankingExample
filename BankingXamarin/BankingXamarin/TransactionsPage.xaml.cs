@@ -19,6 +19,8 @@ namespace BankingXamarin
 
             Title = "View Transactions";
 
+
+
             BindingContext = account;
         }
     }

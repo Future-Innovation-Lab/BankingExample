@@ -10,7 +10,7 @@ namespace BankingXamarin
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            MainPage = new NavigationPage(new BankingPage());
         }
 
         protected override void OnStart()
